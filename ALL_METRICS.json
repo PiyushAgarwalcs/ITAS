@@ -1,0 +1,207 @@
+{
+  "experiment_date": "2026-02-24T09:33:26.191648",
+  "gpu": "Tesla P100-PCIE-16GB",
+  "weapon_detection": {
+    "model": "YOLOv11n+DarkVision",
+    "dataset": "real",
+    "n_runs": 3,
+    "epochs": 60,
+    "per_run": [
+      {
+        "run": 1,
+        "seed": 42,
+        "map50": 0.8687,
+        "map50_95": 0.6782,
+        "precision": 0.8097,
+        "recall": 0.8181,
+        "time_min": 32.6
+      },
+      {
+        "run": 2,
+        "seed": 49,
+        "map50": 0.8592,
+        "map50_95": 0.7015,
+        "precision": 0.8544,
+        "recall": 0.7628,
+        "time_min": 32.5
+      },
+      {
+        "run": 3,
+        "seed": 56,
+        "map50": 0.8647,
+        "map50_95": 0.708,
+        "precision": 0.8302,
+        "recall": 0.8057,
+        "time_min": 32.4
+      }
+    ],
+    "summary": {
+      "map50": {
+        "mean": 0.8642,
+        "std": 0.0039
+      },
+      "map50_95": {
+        "mean": 0.6959,
+        "std": 0.0128
+      },
+      "precision": {
+        "mean": 0.8314,
+        "std": 0.0183
+      },
+      "recall": {
+        "mean": 0.7955,
+        "std": 0.0237
+      }
+    }
+  },
+  "behavior_analysis": {
+    "model": "VGG16+LSTM",
+    "dataset": "real",
+    "n_runs": 3,
+    "epochs": 20,
+    "per_run": [
+      {
+        "run": 1,
+        "seed": 42,
+        "accuracy": 91.67,
+        "f1": 0.9141,
+        "specificity": 100.0,
+        "time_min": 4.7
+      },
+      {
+        "run": 2,
+        "seed": 55,
+        "accuracy": 88.89,
+        "f1": 0.8854,
+        "specificity": 97.78,
+        "time_min": 4.7
+      },
+      {
+        "run": 3,
+        "seed": 68,
+        "accuracy": 95.83,
+        "f1": 0.9582,
+        "specificity": 97.78,
+        "time_min": 4.7
+      }
+    ],
+    "summary": {
+      "accuracy": {
+        "mean": 92.13,
+        "std": 2.852
+      },
+      "f1": {
+        "mean": 0.919,
+        "std": 0.03
+      },
+      "specificity": {
+        "mean": 98.52,
+        "std": 1.047
+      }
+    }
+  },
+  "biometric_fn13": {
+    "model": "FN13+MTCNN",
+    "task": "pair-wise verification",
+    "dataset": "real-mtcnn-aligned",
+    "n_identities": 100,
+    "n_test_pairs": 2000,
+    "model_size_mb": 1.56,
+    "size_vs_facenet": "57x smaller than FaceNet (89MB)",
+    "per_run": [
+      {
+        "run": 1,
+        "seed": 42,
+        "verification_accuracy": 71.85,
+        "roc_auc": 0.7889,
+        "TAR_at_EER_pct": 71.8,
+        "FAR_at_EER_pct": 28.1,
+        "EER_threshold": 0.1578,
+        "model_size_mb": 1.56,
+        "time_min": 0.3
+      },
+      {
+        "run": 2,
+        "seed": 61,
+        "verification_accuracy": 73.0,
+        "roc_auc": 0.8085,
+        "TAR_at_EER_pct": 73.0,
+        "FAR_at_EER_pct": 27.0,
+        "EER_threshold": 0.1591,
+        "model_size_mb": 1.56,
+        "time_min": 0.3
+      },
+      {
+        "run": 3,
+        "seed": 80,
+        "verification_accuracy": 70.95,
+        "roc_auc": 0.7907,
+        "TAR_at_EER_pct": 70.9,
+        "FAR_at_EER_pct": 29.0,
+        "EER_threshold": 0.1356,
+        "model_size_mb": 1.56,
+        "time_min": 0.3
+      }
+    ],
+    "summary": {
+      "verification_accuracy": {
+        "mean": 71.933,
+        "std": 0.839
+      },
+      "roc_auc": {
+        "mean": 0.796,
+        "std": 0.009
+      },
+      "TAR_at_EER_pct": {
+        "mean": 71.9,
+        "std": 0.86
+      },
+      "FAR_at_EER_pct": {
+        "mean": 28.033,
+        "std": 0.818
+      }
+    }
+  },
+  "ablation": {
+    "method": "Controlled darkening at 3 levels",
+    "per_level": [
+      {
+        "level": "Very Dark",
+        "factor": 0.08,
+        "n": 100,
+        "baseline_det_pct": 91.0,
+        "darkvision_det_pct": 86.0,
+        "improvement_pp": -5.0,
+        "baseline_conf": 0.6483,
+        "darkvision_conf": 0.6141
+      },
+      {
+        "level": "Dark",
+        "factor": 0.15,
+        "n": 100,
+        "baseline_det_pct": 87.0,
+        "darkvision_det_pct": 90.0,
+        "improvement_pp": 3.0,
+        "baseline_conf": 0.6562,
+        "darkvision_conf": 0.6271
+      },
+      {
+        "level": "Low-Light",
+        "factor": 0.25,
+        "n": 100,
+        "baseline_det_pct": 93.0,
+        "darkvision_det_pct": 89.0,
+        "improvement_pp": -4.0,
+        "baseline_conf": 0.7044,
+        "darkvision_conf": 0.6494
+      }
+    ],
+    "mean_gain_pp": -2.0
+  },
+  "darkvision": {
+    "total": 5388,
+    "enhanced": 388,
+    "pct": 7.76,
+    "mean_mpi": 141.0
+  }
+}
