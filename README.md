@@ -206,8 +206,10 @@ DarkVision enhanced **7.76% of frames** (388 / 5,388) in the test set with a mea
 ## Author
 
 **Piyush Agarwal**  
-B.Tech Computer Science & Engineering — SRM Institute of Science and Technology  
-[piyushagarwal2003k@gmail.com]
+B.Tech Computer Science & Engineering — SRM Institute of Science and Technology
+
+###### [piyushagarwal2003k@gmail.com]
+
 ---
 
 ## License
