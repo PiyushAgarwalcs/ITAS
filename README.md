@@ -110,36 +110,7 @@ Threat Score = (w_weapon × weapon_score) + (w_behavior × behav_score) + (w_fac
 
 ## Architecture
 
-```
-Input (Image / Video / Webcam)
-        │
-        ▼
-┌───────────────────────────────────────────────┐
-│              DarkVision Preprocessor           │
-│     (adaptive gamma correction if MPI ≤ 55)   │
-└───────────────────────────────────────────────┘
-        │
-        ├──────────────────┬──────────────────┐
-        ▼                  ▼                  ▼
- ┌────────────┐    ┌──────────────┐   ┌─────────────┐
- │  YOLOv11n  │    │ VGG16 + LSTM │   │ FN13 + MTCNN│
- │  Weapon    │    │  Behavior    │   │  Biometric  │
- │ Detection  │    │  Analysis    │   │Verification │
- └────────────┘    └──────────────┘   └─────────────┘
-        │                  │                  │
-   weapon_score       behav_score        face_score
-        │                  │                  │
-        └──────────────────┴──────────────────┘
-                           │
-                           ▼
-              ┌─────────────────────────┐
-              │  Weighted Threat Engine  │
-              │  Composite Score 0–100% │
-              └─────────────────────────┘
-                           │
-                           ▼
-              🔴 CRITICAL  🟠 HIGH  🟡 MODERATE  🟢 LOW
-```
+<img width="1110" height="720" alt="image" src="https://github.com/user-attachments/assets/27ce4b6e-73d7-4d25-b8c7-e8271c600289" />
 
 ---
 
@@ -236,8 +207,7 @@ DarkVision enhanced **7.76% of frames** (388 / 5,388) in the test set with a mea
 
 **Piyush Agarwal**  
 B.Tech Computer Science & Engineering — SRM Institute of Science and Technology  
-[LinkedIn](https://linkedin.com/in/piyush-agarwal) · [GitHub](https://github.com/PiyushAgarwalcs) · [HuggingFace](https://huggingface.co/PiyushAgX)
-
+[piyushagarwal2003k@gmail.com]
 ---
 
 ## License
